@@ -2,7 +2,7 @@ from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 from app.translationn import translating
 
-
+        
 class Banner(models.Model):
     # title = models.CharField(max_length=255)
     title_eng = models.CharField(max_length=255)
