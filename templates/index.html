@@ -71,11 +71,7 @@
 						<li class="active"><a href="#" data-nav-section="home">Home</a></li>
 						<li><a href="#" data-nav-section="about">About</a></li>
 						<li><a href="#" data-nav-section="services">Services</a></li>
-						<li><a href="#" data-nav-section="skills">Skills</a></li>
-						<li><a href="#" data-nav-section="education">Education</a></li>
-						<li><a href="#" data-nav-section="experience">Experience</a></li>
 						<li><a href="#" data-nav-section="work">Work</a></li>
-						<li><a href="#" data-nav-section="blog">Blog</a></li>
 						<li><a href="#" data-nav-section="contact">Contact</a></li>
 					</ul>
 				</div>
@@ -83,10 +79,9 @@
 
 			<div class="colorlib-footer">
 				<ul>
-					<li><a href="#" style="color: black;"><i class="icon-facebook2"></i></a></li>
-					<li><a href="#" style="color: black;"><i class="icon-twitter2"></i></a></li>
-					<li><a href="#" style="color: black;"><i class="icon-instagram"></i></a></li>
-					<li><a href="#" style="color: black;"><i class="icon-linkedin2"></i></a></li>
+					{% for social in social_media %}
+					<li><a href="{{social.link}}" target="_blank" style="color: black;"><i class="icon-{{social.icon}}"></i></a></li>
+					{% endfor %}
 				</ul>
 			</div>
 
@@ -121,10 +116,13 @@
 
 							<div class="row">
 								<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-									<div class="hire">
-										<h2>I am happy to know you <br>that 300+ projects done sucessfully!</h2>
-										<a href="#" class="btn-hire">Hire me</a>
-									</div>
+									<a href="https://www.instagram.com/kayumov_k7/" target="_blank"><div class="hire">
+										<h2 style="color: #000;">I am happy to know you <br>
+											Follow me on Instagram 
+												<i class="icon-instagram"></i>
+										</h2>
+										<a href="https://www.instagram.com/kayumov_k7/" target="_blank" class="btn-hire">Follow me</a>
+									</div></a>
 								</div>
 							</div>
 						</div>
@@ -133,7 +131,7 @@
 			</section>
 
 			
-			<section class="colorlib-services" data-section="services">
+			<section style="padding-bottom: 0;" class="colorlib-services" data-section="services">
 				<div class="colorlib-narrow-content">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
@@ -161,7 +159,7 @@
 			</section>
 			
 
-			<section class="colorlib-work" data-section="work">
+			<section style="padding-bottom: 0;" class="colorlib-work" data-section="work">
 				<div class="colorlib-narrow-content">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
@@ -170,101 +168,23 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="project" style="background-image: url({% static 'images/img-1.jpg' %});">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 01</a></h3>
-										<span>Website</span>
-										<p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-							<div class="project" style="background-image: url({% static 'images/img-2.jpg' %});">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 02</a></h3>
-										<span>Animation</span>
-										<p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInTop">
-							<div class="project" style="background-image: url({% static 'images/img-3.jpg' %});">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 03</a></h3>
-										<span>Illustration</span>
-										<p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
+						{% for item in recent_works_with_hits %}
 						<div class="col-md-6 animate-box" data-animate-effect="fadeInBottom">
-							<div class="project" style="background-image: url('images/img-4.jpg')">
+							<div class="project" style="background-image: url({{item.recent_work.img.url}})">
 								<div class="desc">
 									<div class="con">
-										<h3><a href="work.html">Work 04</a></h3>
+										<h3><a href="#">{{ item.recent_work.title_eng }}</a></h3>
 										<span>Application</span>
 										<p class="icon">
 											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
+											<span><a href="#"><i class="icon-eye"></i> {{ item.hit_count }}</a></span>
 											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
 										</p>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="project" style="background-image: url({% static 'images/img-5.jpg' %});">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 05</a></h3>
-										<span>Graphic, Logo</span>
-										<p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-							<div class="project" style="background-image: url({% static 'images/img-6.jpg' %});">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 06</a></h3>
-										<span>Web Design</span>
-										<p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12 animate-box">
-							<p><a href="#" class="btn btn-primary btn-lg btn-load-more">Load more <i class="icon-reload"></i></a></p>
-						</div>
+						{% endfor %}
 					</div>
 				</div>
 			</section>

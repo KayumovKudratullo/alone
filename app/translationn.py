@@ -3,7 +3,7 @@ from googletrans import Translator
 def translating(text):
     translator = Translator()
     data = {}
-    languages = ['ru', 'uz']  # List of target languages
+    languages = ['ru', 'uz', 'de']  # List of target languages
     try:
         for lang in languages:
             translation = translator.translate(text, dest=lang)
